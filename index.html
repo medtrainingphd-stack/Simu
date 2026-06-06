@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Beebee ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#ffe6f2;
+    text-align:center;
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:20px;
+}
+
+.active{
+    display:flex;
+}
+
+h1{
+    color:#ff1493;
+}
+
+p{
+    font-size:22px;
+    max-width:800px;
+    line-height:1.8;
+}
+
+button{
+    margin-top:25px;
+    padding:14px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.next{
+    background:#ff69b4;
+    color:white;
+}
+
+.yes{
+    background:#4CAF50;
+    color:white;
+}
+
+.no{
+    background:#ff4d4d;
+    color:white;
+}
+
+.radhe{
+    font-size:80px;
+    color:#ff1493;
+    animation:glow 1s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #ff69b4;
+    }
+    to{
+        text-shadow:0 0 40px #ff1493;
+    }
+}
+
+.floating{
+    position:absolute;
+    font-size:30px;
+    animation:floatUp 5s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+
+<div id="page1" class="page active">
+
+<h1>Hey Beebee ❤️</h1>
+
+<p>
+You are so important to me.<br>
+More than you probably realize.<br>
+Your smile brightens my day.<br>
+Your presence makes everything feel lighter.<br>
+And today, I wanted to tell you something special...
+</p>
+
+<button class="next" onclick="nextPage(2)">Next ➜</button>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div id="page2" class="page">
+
+<h1>A Little Secret 🤫</h1>
+
+<p>
+Whenever life gets difficult,<br>
+thinking about you makes me smile.<br>
+You bring warmth, comfort and happiness.<br>
+You make ordinary moments feel beautiful.<br>
+And that's why this day means so much...
+</p>
+
+<button class="next" onclick="nextPage(3)">Continue ❤️</button>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div id="page3" class="page">
+
+<h1>One Important Question 😏</h1>
+
+<p>
+Before we go any further...<br>
+I need an honest answer.<br>
+No cheating 😎<br>
+No running away 😂<br>
+Ready?
+</p>
+
+<button class="next" onclick="nextPage(4)">Ask Me ➜</button>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div id="page4" class="page">
+
+<h1 id="question">Do you love me? ❤️</h1>
+
+<div>
+<button class="yes" onclick="birthdayPage()">Yes 💖</button>
+<button class="no" onclick="noClicked()">No 😒</button>
+</div>
+
+</div>
+
+<!-- PAGE 5 -->
+
+<div id="page5" class="page">
+
+<h1>🎂 HAPPY BIRTHDAY BEEBEE 🎂</h1>
+
+<p>
+On your special day, I want you to know how much you mean to me.<br><br>
+
+Thank you for every smile, every laugh, every memory and every moment.<br><br>
+
+You make life brighter simply by being in it.<br><br>
+
+May this year bring you happiness, success, peace and countless reasons to smile.<br><br>
+
+May all your dreams come true and may your heart always stay as beautiful as it is today.<br><br>
+
+And no matter where life takes us, you'll always have a special place in my heart. ❤️
+</p>
+
+<button class="next" onclick="radhePage()">One Last Thing ✨</button>
+
+</div>
+
+<!-- PAGE 6 -->
+
+<div id="page6" class="page">
+
+<div class="radhe">🌸 RADHE RADHE 🌸</div>
+
+<h2>❤️ Forever & Always ❤️</h2>
+
+<p>
+May Radha Rani and Krishna always bless you with happiness,
+peace, love and success. 🌸✨
+</p>
+
+</div>
+
+<script>
+
+let noCount = 0;
+
+function show(id){
+
+document.querySelectorAll(".page").forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+function nextPage(n){
+show("page"+n);
+}
+
+function birthdayPage(){
+show("page5");
+}
+
+function radhePage(){
+
+show("page6");
+
+setInterval(()=>{
+
+let item=document.createElement("div");
+
+item.className="floating";
+
+let things=[
+"❤️",
+"💖",
+"💕",
+"🌸",
+"✨",
+"🌸 RADHE RADHE 🌸"
+];
+
+item.innerHTML=
+things[Math.floor(Math.random()*things.length)];
+
+item.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(item);
+
+setTimeout(()=>{
+item.remove();
+},5000);
+
+},300);
+
+}
+
+function noClicked(){
+
+noCount++;
+
+const q=document.getElementById("question");
+
+if(noCount===1){
+q.innerHTML="Uh sure? 😏";
+}
+
+else if(noCount===2){
+q.innerHTML="Ek aur baar soch le? 🥺";
+}
+
+else if(noCount===3){
+q.innerHTML="Pakka? 😭";
+}
+
+else if(noCount===4){
+q.innerHTML="Mujhe lagta hai galat button dab gaya 😂";
+}
+
+else{
+q.innerHTML="Ab toh YES hi dabana padega 😎❤️";
+}
+
+}
+
+</script>
+
+</body>
+</html>
